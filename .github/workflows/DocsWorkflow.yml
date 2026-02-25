@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: uv sync --group dev
       - name: Build documentation
-        run: uv run mkdocs build --strict
+        run: uv run zensical build --strict
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
