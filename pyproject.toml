@@ -11,14 +11,14 @@ dependencies = [
 [dependency-groups]
 dev = [
     "hatch>=1.16.4",
-    "mkdocs>=1.6.1",
-    "mkdocs-material>=9.7.3",
+    "mkdocstrings-python>=2.0.3",
     "mkdocstrings[python]>=1.0.3",
     "mypy>=1.19.1",
     "pre-commit>=4.5.1",
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
     "ruff>=0.15.2",
+    "zensical>=0.0.23",
 ]
 
 [build-system]

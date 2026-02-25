@@ -7,13 +7,13 @@ on:
     paths:
       - 'docs/**'
       - 'src/**'
-      - 'mkdocs.yml'
+      - 'zensical.toml'
       - '.github/workflows/DocsWorkflow.yml'
   pull_request:
     paths:
       - 'docs/**'
       - 'src/**'
-      - 'mkdocs.yml'
+      - 'zensical.toml'
       - '.github/workflows/DocsWorkflow.yml'
 
 concurrency:

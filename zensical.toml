@@ -1,0 +1,76 @@
+[project]
+site_name = "My Project Documentation"
+description = "A modern documentation site powered by Zensical."
+authors = ["Your Name <you@example.com>"]
+version = "1.0.0"
+repo_url = "https://github.com/lujohae/template-python"
+repo_name = "LuJoHae/template-python"
+
+[theme]
+# Zensical's engine supports the "material" design language natively
+name = "material"
+palette = "automatic" # Switches between light/dark based on OS
+accent = "indigo"
+primary = "white"
+
+[features]
+# These replace many of the old 'theme.features' from MkDocs
+navigation_tabs = true
+navigation_sections = true
+navigation_sticky = true
+search_disco = true # Enables the high-performance search engine
+toc_integration = true
+edit_button = "https://github.com/user/repo/edit/main/docs/"
+
+[[navigation]]
+Home = "index.md"
+
+[[navigation]]
+"User Guide" = [
+    { "Getting Started" = "guide/setup.md" },
+    { "Advanced Usage" = "guide/advanced.md" }
+]
+
+[[navigation]]
+"API Reference" = "api/reference.md"
+
+[markdown]
+# Zensical integrates common extensions by default
+extensions = [
+    "admonition",
+    "pymdownx.details",
+    "pymdownx.superfences",
+    "pymdownx.tabbed",
+    "attr_list"
+]
+
+[build]
+strict = true
+output_dir = "site"
+
+[project.plugins.mkdocstrings]
+# Use the python handler
+handlers.python.paths = ["src"]
+handlers.python.options.docstring_style = "google"
+handlers.python.options.show_source = true
+
+# Palette toggle for automatic mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+# Theme Switcher Logic
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "indigo"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "indigo"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
