@@ -27,16 +27,16 @@ check: lint typecheck test
 
 # Version management
 version:
-	uvx hatch version
+	uv run hatch version
 
 bump-patch:
-	uvx hatch version patch
+	uv run hatch version patch
 
 bump-minor:
-	uvx hatch version minor
+	uv run hatch version minor
 
 bump-major:
-	uvx hatch version major
+	uv run hatch version major
 
 release: check
 	@VERSION=$$(uvx hatch version); \
@@ -45,10 +45,13 @@ release: check
 	git tag "v$$VERSION"; \
 	echo "Tagged v$$VERSION. Run 'git push origin main --tags' to release."
 
-rename-package:
+init:
 	@read -p "Enter the new package name: " NEW_NAME; \
 	OLD_NAME="python_package"; \
 	mv src/$$OLD_NAME src/$$NEW_NAME && \
 	sed -i '' "s/$$OLD_NAME/$$NEW_NAME/g" pyproject.toml && \
 	find src/ tests/ docs/ -type f -exec sed -i '' "s/$$OLD_NAME/$$NEW_NAME/g" {} + && \
 	echo "Package renamed from $$OLD_NAME to $$NEW_NAME"
+	uv sync --group dev
+	uv run pre-commit install
+	echo "Installed package and pre-commit"
