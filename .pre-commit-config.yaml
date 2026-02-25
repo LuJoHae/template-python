@@ -1,0 +1,31 @@
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.2  # Use the latest Ruff version
+    hooks:
+      # 1. Run the linter to catch errors and unsorted imports
+      - id: ruff
+        args: [ --fix ]
+      # 2. Run the formatter to fix spacing/quotes
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml          # Validates your YAML files
+      - id: check-toml          # Validates your TOML files
+      - id: check-merge-conflict # Prevents committing merge conflict markers
+      - id: check-case-conflict # Prevents case-sensitivity issues
+      - id: debug-statements    # Prevents committing debug statements
+      - id: end-of-file-fixer   # Ensures a newline at the end of files
+      - id: trailing-whitespace # Trims invisible spaces
+      - id: check-added-large-files # Prevents committing massive binaries
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: uv run mypy
+        language: system
+        types: [python]
+        require_serial: true
+        pass_filenames: true

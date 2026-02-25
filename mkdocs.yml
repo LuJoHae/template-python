@@ -1,0 +1,60 @@
+site_name: "My Project Name"
+site_description: "This is a project description."
+site_author: "Your Name"
+repo_url: "https://github.com/your-username/your-repo"
+repo_name: "your-username/your-repo"
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs          # Top-level menu as tabs
+    - navigation.sections      # Group sidebar items
+    - navigation.expand        # Keep sidebar expanded
+    - navigation.top           # "Back to top" button
+    - content.code.copy        # Add copy buttons to code blocks
+    - content.code.annotate    # Allow comments inside code snippets
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [src]
+          options:
+            docstring_style: google  # Or "numpy"
+            show_source: true        # Let people see the code behind the doc
+            show_root_heading: true
+            show_category_heading: true
+
+markdown_extensions:
+  - admonition               # Cool alert boxes (Notes, Warnings)
+  - pymdownx.details         # Collapsible blocks
+  - pymdownx.superfences     # Better code blocks
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+
+nav:
+  - Home: index.md
+  - API Reference: reference.md
