@@ -1,1 +1,1 @@
-::: package_name
+::: python_package
