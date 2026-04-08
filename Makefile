@@ -16,7 +16,7 @@ format:
 
 # Type checking
 typecheck:
-	uv run mypy src/
+	uv run mypy src/ tests/
 
 # Tests with coverage
 test:
