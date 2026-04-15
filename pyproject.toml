@@ -10,7 +10,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "hatch>=1.16.4",
+    "hatch>=1.16.5",
     "mkdocstrings-python>=2.0.3",
     "mkdocstrings[python]>=1.0.3",
     "mypy>=1.19.1",
